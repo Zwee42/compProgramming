@@ -1,0 +1,51 @@
+import collections
+
+(n,m,k) = map(int, input().split(" "))
+
+nodes = []
+
+for i in range(n ):
+    nodes.append([])
+    
+
+graph = [[] for _ in range(n)]
+
+for i in range(m):
+    (u,v) = map(int, input().split(" "))
+    graph[u-1].append(v-1)
+    graph[v-1].append(u-1)
+
+# print(graph)
+
+
+def dfs(node, par=-1):
+    count = [node]
+    for nei in graph[node]:
+        if nei != par:
+            res = dfs(nei, node)
+            count += (res)
+    return count
+
+
+
+
+# print()
+
+print(dfs(0))
+# res = dfs(0)
+# print(res)
+
+
+success = True
+outs = []
+for i in range(n):
+    val = dfs(i)
+    print(val)
+    outs.append(val)
+   success = val % k == 0
+if not success:
+    print("impossible")
+
+# print(outs)
+    
+

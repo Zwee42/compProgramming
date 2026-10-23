@@ -1,0 +1,5 @@
+inp = input().split(" ")
+date = inp[0]
+time = inp[1] 
+
+

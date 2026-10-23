@@ -1,0 +1,5 @@
+def is_revert(s):
+    splits = split(s, "\"")
+    print(splits)
+
+is_revert("Revert \"This\"")

@@ -1,0 +1,25 @@
+(n, m) = map(int, input().split(" "))
+
+inputs = {}
+exlusive_outputs = {}
+# [0, 1, 0, 0, 2, 1]
+for i in range(n):
+    inputs[i+1] = []
+    exlusive_outputs[i+1] = 0
+
+for i in range(m):
+    (u, v) = map(int, input().split(" "))
+
+    if u not in inputs[v] and v not in inputs[u]:
+        exlusive_outputs[v] += 1
+    else:
+        exlusive_outputs[u] -= 1
+    inputs[u].append(v)
+
+value = max(exlusive_outputs.values())
+for pair in exlusive_outputs.items():
+    if pair[1] == value:
+        print(pair[0],pair[1])
+
+
+# print(followers)
